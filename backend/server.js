@@ -6,6 +6,7 @@ import connectDB from './config/db.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import userRoutes from './routes/userRoutes.js'
 import notificationRoutes from './routes/notificationRoutes.js'
+import consumptionRoutes from './routes/consumptionRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 
 dotenv.config()
@@ -15,6 +16,7 @@ app.use(express.json())
 
 app.use('/api/users', userRoutes)
 app.use('/api/notifications', notificationRoutes)
+app.use('/api/consumptions', consumptionRoutes)
 app.use('/api/upload', uploadRoutes)
 
 const __dirname = path.resolve()
