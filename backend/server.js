@@ -4,11 +4,17 @@ import dotenv from 'dotenv'
 import colors from 'colors'
 import connectDB from './config/db.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
+import uploadRoutes from './routes/uploadRoutes.js'
 
 dotenv.config()
 connectDB()
 const app = express()
 app.use(express.json())
+
+app.use('/api/upload', uploadRoutes)
+
+const __dirname = path.resolve()
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 app.get('/', (req, res) => {
   res.send('NODE REST API is running...')
